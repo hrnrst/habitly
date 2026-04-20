@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter pub *)",
+      "Bash(flutter build *)",
+      "Bash(grep -v \"^$\\\\|Running Gradle\\\\|assembleDebug\")"
+    ]
+  }
+}

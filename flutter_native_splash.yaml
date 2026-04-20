@@ -1,0 +1,15 @@
+flutter_native_splash:
+  color: "#0F0F1A"
+  color_dark: "#0F0F1A"
+
+  android: true
+  ios: true
+
+  # İkon eklemek istersen:
+  # image: assets/splash_logo.png
+  # image_dark: assets/splash_logo.png
+
+  android_gravity: center
+  ios_content_mode: center
+
+  fullscreen: false
