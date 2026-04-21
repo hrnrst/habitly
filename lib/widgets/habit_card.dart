@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../models/habit.dart';
 import '../theme/app_theme.dart';
 
@@ -16,6 +17,7 @@ class HabitCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final completed = habit.isCompletedToday();
 
     return Dismissible(
@@ -67,9 +69,8 @@ class HabitCard extends StatelessWidget {
                   size: 14, color: AppTheme.warning),
               const SizedBox(width: 4),
               Text(
-                '${habit.streak} gün seri',
-                style: const TextStyle(
-                    color: AppTheme.warning, fontSize: 12),
+                l.habitsStreakDays(habit.streak),
+                style: const TextStyle(color: AppTheme.warning, fontSize: 12),
               ),
             ],
           ),

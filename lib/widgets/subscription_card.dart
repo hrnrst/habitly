@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../models/subscription.dart';
 import '../theme/app_theme.dart';
 
@@ -14,6 +15,7 @@ class SubscriptionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final urgent = sub.daysUntilBilling <= 3;
     final symbol =
         sub.currency == 'TRY' ? '₺' : (sub.currency == 'USD' ? '\$' : '€');
@@ -36,7 +38,8 @@ class SubscriptionCard extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: urgent ? AppTheme.warning.withValues(alpha: 0.07) : AppTheme.card,
+          color:
+              urgent ? AppTheme.warning.withValues(alpha: 0.07) : AppTheme.card,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: urgent
@@ -61,8 +64,8 @@ class SubscriptionCard extends StatelessWidget {
                 ),
               Text(
                 sub.daysUntilBilling <= 0
-                    ? 'Bugün yenileniyor!'
-                    : '${sub.daysUntilBilling} gün sonra yenileniyor',
+                    ? l.subscriptionsRenewsToday
+                    : l.subscriptionsRenewsInDays(sub.daysUntilBilling),
                 style: TextStyle(
                   color: urgent ? AppTheme.warning : AppTheme.textSecondary,
                   fontSize: 12,
@@ -82,7 +85,9 @@ class SubscriptionCard extends StatelessWidget {
                     fontSize: 16),
               ),
               Text(
-                sub.billingCycle == 'monthly' ? 'aylık' : 'yıllık',
+                sub.billingCycle == 'monthly'
+                    ? l.subscriptionsCycleMonthly
+                    : l.subscriptionsCycleYearly,
                 style: const TextStyle(
                     color: AppTheme.textSecondary, fontSize: 11),
               ),

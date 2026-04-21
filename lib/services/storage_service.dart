@@ -26,18 +26,18 @@ class StorageService extends ChangeNotifier {
 
   Future<void> saveHabit(Habit habit) async {
     await _habits.put(habit.id, habit.toMap());
-    await NotificationService.scheduleHabitReminder(
+    notifyListeners();
+    NotificationService.scheduleHabitReminder(
       habitId: habit.id,
       habitName: habit.name,
       emoji: habit.emoji,
-    );
-    notifyListeners();
+    ).catchError((_) {});
   }
 
   Future<void> deleteHabit(String id) async {
     await _habits.delete(id);
-    await NotificationService.cancelHabitReminder(id);
     notifyListeners();
+    NotificationService.cancelHabitReminder(id).catchError((_) {});
   }
 
   Future<void> toggleHabitToday(String id) async {
@@ -65,21 +65,21 @@ class StorageService extends ChangeNotifier {
 
   Future<void> saveSubscription(Subscription subscription) async {
     await _subscriptions.put(subscription.id, subscription.toMap());
-    await NotificationService.scheduleSubscriptionReminder(
+    notifyListeners();
+    NotificationService.scheduleSubscriptionReminder(
       subId: subscription.id,
       subName: subscription.name,
       emoji: subscription.emoji,
       billingDate: subscription.nextBillingDate,
       amount: subscription.amount,
       currency: subscription.currency,
-    );
-    notifyListeners();
+    ).catchError((_) {});
   }
 
   Future<void> deleteSubscription(String id) async {
     await _subscriptions.delete(id);
-    await NotificationService.cancelSubscriptionReminder(id);
     notifyListeners();
+    NotificationService.cancelSubscriptionReminder(id).catchError((_) {});
   }
 
   double getTotalMonthlySpend() {

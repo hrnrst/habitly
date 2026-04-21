@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
@@ -38,16 +39,20 @@ class NotificationService {
     int hour = 9,
     int minute = 0,
   }) async {
+    final isTr = _isTurkish();
     await _plugin.zonedSchedule(
       id: _habitNotifId(habitId),
-      title: '$emoji Alışkanlık Zamanı',
-      body: '$habitName alışkanlığını unutma!',
+      title: isTr ? '$emoji Alışkanlık Zamanı' : '$emoji Habit Time',
+      body: isTr
+          ? '$habitName alışkanlığını unutma!'
+          : "Don't forget your $habitName habit!",
       scheduledDate: _nextDailyInstance(hour, minute),
       notificationDetails: NotificationDetails(
         android: AndroidNotificationDetails(
           _habitsChannelId,
-          'Alışkanlık Hatırlatıcıları',
-          channelDescription: 'Günlük alışkanlık hatırlatmaları',
+          isTr ? 'Alışkanlık Hatırlatıcıları' : 'Habit Reminders',
+          channelDescription:
+              isTr ? 'Günlük alışkanlık hatırlatmaları' : 'Daily habit reminders',
           importance: Importance.high,
           priority: Priority.high,
         ),
@@ -69,19 +74,25 @@ class NotificationService {
     final reminderDate = billingDate.subtract(const Duration(days: 3));
     if (reminderDate.isBefore(DateTime.now())) return;
 
+    final isTr = _isTurkish();
     final symbol =
         currency == 'TRY' ? '₺' : (currency == 'USD' ? '\$' : '€');
+    final amountStr = '$symbol${amount.toStringAsFixed(2)}';
+
     await _plugin.zonedSchedule(
       id: _subNotifId(subId),
-      title: '$emoji Abonelik Yenileniyor',
-      body:
-          '$subName 3 gün sonra yenileniyor ($symbol${amount.toStringAsFixed(2)})',
+      title: isTr ? '$emoji Abonelik Yenileniyor' : '$emoji Subscription Renewing',
+      body: isTr
+          ? '$subName 3 gün sonra yenileniyor ($amountStr)'
+          : '$subName renews in 3 days ($amountStr)',
       scheduledDate: tz.TZDateTime.from(reminderDate, tz.local),
       notificationDetails: NotificationDetails(
         android: AndroidNotificationDetails(
           _subsChannelId,
-          'Abonelik Hatırlatıcıları',
-          channelDescription: 'Abonelik yenileme hatırlatmaları',
+          isTr ? 'Abonelik Hatırlatıcıları' : 'Subscription Reminders',
+          channelDescription: isTr
+              ? 'Abonelik yenileme hatırlatmaları'
+              : 'Subscription renewal reminders',
           importance: Importance.high,
           priority: Priority.high,
         ),
@@ -98,6 +109,11 @@ class NotificationService {
       _plugin.cancel(id: _subNotifId(subId));
 
   static Future<void> cancelAll() => _plugin.cancelAll();
+
+  static bool _isTurkish() {
+    final locale = Platform.localeName; // e.g. "tr_TR", "en_US"
+    return locale.startsWith('tr');
+  }
 
   static tz.TZDateTime _nextDailyInstance(int hour, int minute) {
     final now = tz.TZDateTime.now(tz.local);

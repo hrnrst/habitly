@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+import '../l10n/app_localizations.dart';
 import '../services/storage_service.dart';
 import '../models/subscription.dart';
 import '../theme/app_theme.dart';
@@ -11,9 +12,10 @@ class SubscriptionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Abonelikler'),
+        title: Text(l.subscriptionsTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.add, color: AppTheme.primary),
@@ -32,22 +34,24 @@ class SubscriptionsScreen extends StatelessWidget {
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOut,
                 child: subs.isNotEmpty
-                    ? _SummaryCard(totalMonthly: totalMonthly, count: subs.length)
+                    ? _SummaryCard(
+                        totalMonthly: totalMonthly, count: subs.length)
                     : const SizedBox.shrink(),
               ),
               Expanded(
                 child: subs.isEmpty
-                    ? const _EmptyState()
+                    ? _EmptyState()
                     : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: 16),
                         itemCount: subs.length,
                         itemBuilder: (context, index) {
                           return _AnimatedItem(
                             index: index,
                             child: SubscriptionCard(
                               sub: subs[index],
-                              onDelete: () =>
-                                  storage.deleteSubscription(subs[index].id),
+                              onDelete: () => storage
+                                  .deleteSubscription(subs[index].id),
                             ),
                           );
                         },
@@ -61,14 +65,18 @@ class SubscriptionsScreen extends StatelessWidget {
   }
 
   void _showAddSubscriptionSheet(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final nameController = TextEditingController();
     final amountController = TextEditingController();
     String selectedEmoji = '📺';
     String selectedCurrency = 'TRY';
     String selectedCycle = 'monthly';
-    DateTime nextBilling = DateTime.now().add(const Duration(days: 30));
+    final DateTime nextBilling =
+        DateTime.now().add(const Duration(days: 30));
 
-    final emojis = ['📺', '🎵', '🎮', '☁️', '📰', '🏋️', '🎬', '📱', '💼', '🛒'];
+    final emojis = [
+      '📺', '🎵', '🎮', '☁️', '📰', '🏋️', '🎬', '📱', '💼', '🛒'
+    ];
 
     showModalBottomSheet(
       context: context,
@@ -86,8 +94,8 @@ class SubscriptionsScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Yeni Abonelik',
-                    style: TextStyle(
+                Text(l.subscriptionsAddTitle,
+                    style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: AppTheme.textPrimary)),
@@ -123,9 +131,8 @@ class SubscriptionsScreen extends StatelessWidget {
                   controller: nameController,
                   autofocus: true,
                   style: const TextStyle(color: AppTheme.textPrimary),
-                  decoration: const InputDecoration(
-                    hintText: 'Abonelik adı (ör. Netflix, Spotify)',
-                  ),
+                  decoration: InputDecoration(
+                      hintText: l.subscriptionsAddNameHint),
                 ),
                 const SizedBox(height: 12),
                 Row(
@@ -135,15 +142,16 @@ class SubscriptionsScreen extends StatelessWidget {
                         controller: amountController,
                         keyboardType: TextInputType.number,
                         style: const TextStyle(color: AppTheme.textPrimary),
-                        decoration:
-                            const InputDecoration(hintText: 'Tutar'),
+                        decoration: InputDecoration(
+                            hintText: l.subscriptionsAddAmountHint),
                       ),
                     ),
                     const SizedBox(width: 12),
                     DropdownButton<String>(
                       value: selectedCurrency,
                       dropdownColor: AppTheme.surface,
-                      style: const TextStyle(color: AppTheme.textPrimary),
+                      style:
+                          const TextStyle(color: AppTheme.textPrimary),
                       items: ['TRY', 'USD', 'EUR']
                           .map((c) => DropdownMenuItem(
                               value: c, child: Text(c)))
@@ -156,12 +164,12 @@ class SubscriptionsScreen extends StatelessWidget {
                 const SizedBox(height: 12),
                 Row(
                   children: [
-                    const Text('Dönem:',
-                        style:
-                            TextStyle(color: AppTheme.textSecondary)),
+                    Text(l.subscriptionsAddPeriod,
+                        style: const TextStyle(
+                            color: AppTheme.textSecondary)),
                     const SizedBox(width: 12),
                     ChoiceChip(
-                      label: const Text('Aylık'),
+                      label: Text(l.subscriptionsAddMonthly),
                       selected: selectedCycle == 'monthly',
                       selectedColor: AppTheme.primary,
                       onSelected: (_) =>
@@ -169,7 +177,7 @@ class SubscriptionsScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     ChoiceChip(
-                      label: const Text('Yıllık'),
+                      label: Text(l.subscriptionsAddYearly),
                       selected: selectedCycle == 'yearly',
                       selectedColor: AppTheme.primary,
                       onSelected: (_) =>
@@ -194,8 +202,7 @@ class SubscriptionsScreen extends StatelessWidget {
                         id: const Uuid().v4(),
                         name: nameController.text.trim(),
                         emoji: selectedEmoji,
-                        amount:
-                            double.tryParse(amountController.text) ?? 0,
+                        amount: double.tryParse(amountController.text) ?? 0,
                         currency: selectedCurrency,
                         billingCycle: selectedCycle,
                         nextBillingDate: nextBilling,
@@ -204,8 +211,8 @@ class SubscriptionsScreen extends StatelessWidget {
                           .saveSubscription(sub);
                       Navigator.pop(context);
                     },
-                    child: const Text('Ekle',
-                        style: TextStyle(
+                    child: Text(l.subscriptionsAdd,
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold)),
@@ -228,6 +235,7 @@ class _SummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(20),
@@ -240,14 +248,16 @@ class _SummaryCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Aylık Toplam',
-                  style: TextStyle(color: Colors.white70, fontSize: 13)),
-              SizedBox(height: 4),
-              Text('Aktif Abonelikler',
-                  style: TextStyle(color: Colors.white70, fontSize: 13)),
+              Text(l.subscriptionsSummaryMonthly,
+                  style:
+                      const TextStyle(color: Colors.white70, fontSize: 13)),
+              const SizedBox(height: 4),
+              Text(l.subscriptionsSummaryActive,
+                  style:
+                      const TextStyle(color: Colors.white70, fontSize: 13)),
             ],
           ),
           Column(
@@ -257,7 +267,7 @@ class _SummaryCard extends StatelessWidget {
                 tween: Tween(begin: 0, end: totalMonthly),
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeOut,
-                builder: (_ , value, _) => Text(
+                builder: (_, value, _) => Text(
                   '₺${value.toStringAsFixed(2)}',
                   style: const TextStyle(
                       color: Colors.white,
@@ -265,7 +275,7 @@ class _SummaryCard extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              Text('$count abonelik',
+              Text(l.subscriptionsSummaryCount(count),
                   style:
                       const TextStyle(color: Colors.white70, fontSize: 13)),
             ],
@@ -277,23 +287,22 @@ class _SummaryCard extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
-  const _EmptyState();
-
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    final l = AppLocalizations.of(context)!;
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('💳', style: TextStyle(fontSize: 64)),
-          SizedBox(height: 16),
-          Text('Henüz abonelik yok',
-              style:
-                  TextStyle(color: AppTheme.textSecondary, fontSize: 16)),
-          SizedBox(height: 8),
-          Text('+ butonuyla ekleyebilirsin',
-              style:
-                  TextStyle(color: AppTheme.textSecondary, fontSize: 13)),
+          const Text('💳', style: TextStyle(fontSize: 64)),
+          const SizedBox(height: 16),
+          Text(l.subscriptionsEmpty,
+              style: const TextStyle(
+                  color: AppTheme.textSecondary, fontSize: 16)),
+          const SizedBox(height: 8),
+          Text(l.subscriptionsEmptyHint,
+              style: const TextStyle(
+                  color: AppTheme.textSecondary, fontSize: 13)),
         ],
       ),
     );
@@ -312,7 +321,7 @@ class _AnimatedItem extends StatelessWidget {
       tween: Tween(begin: 0, end: 1),
       duration: Duration(milliseconds: 300 + index * 50),
       curve: Curves.easeOut,
-      builder: (_ , value, _) => Opacity(
+      builder: (_, value, _) => Opacity(
         opacity: value,
         child: Transform.translate(
           offset: Offset(0, 20 * (1 - value)),

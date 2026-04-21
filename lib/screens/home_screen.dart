@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import 'dashboard_screen.dart';
 import 'habits_screen.dart';
 import 'subscriptions_screen.dart';
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
@@ -32,21 +34,21 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard_outlined),
-            activeIcon: Icon(Icons.dashboard),
-            label: 'Özet',
+            icon: const Icon(Icons.dashboard_outlined),
+            activeIcon: const Icon(Icons.dashboard),
+            label: l.navDashboard,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.check_circle_outline),
-            activeIcon: Icon(Icons.check_circle),
-            label: 'Alışkanlıklar',
+            icon: const Icon(Icons.check_circle_outline),
+            activeIcon: const Icon(Icons.check_circle),
+            label: l.navHabits,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.credit_card_outlined),
-            activeIcon: Icon(Icons.credit_card),
-            label: 'Abonelikler',
+            icon: const Icon(Icons.credit_card_outlined),
+            activeIcon: const Icon(Icons.credit_card),
+            label: l.navSubscriptions,
           ),
         ],
       ),

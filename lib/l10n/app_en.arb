@@ -1,0 +1,127 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Habitly",
+
+  "navDashboard": "Dashboard",
+  "navHabits": "Habits",
+  "navSubscriptions": "Subscriptions",
+
+  "dashboardTitle": "Dashboard",
+  "dashboardSectionToday": "TODAY",
+  "dashboardSectionUpcoming": "UPCOMING PAYMENTS",
+  "dashboardSectionPending": "PENDING TODAY",
+  "dashboardGreetingMorning": "Good morning!",
+  "dashboardGreetingAfternoon": "Good afternoon!",
+  "dashboardGreetingEvening": "Good evening!",
+  "dashboardProgressNoHabits": "No habits yet",
+  "dashboardProgressCompleted": "{completed} / {total} completed",
+  "@dashboardProgressCompleted": {
+    "placeholders": {
+      "completed": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "dashboardAllDone": "🎉 All habits completed for today!",
+  "dashboardStatStreak": "Best Streak",
+  "dashboardStatStreakValue": "{count} days",
+  "@dashboardStatStreakValue": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "dashboardStatMonthly": "Monthly Spend",
+  "dashboardStatHabits": "Habits",
+  "dashboardStatHabitsValue": "{count} total",
+  "@dashboardStatHabitsValue": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "dashboardStatSubscriptions": "Subscriptions",
+  "dashboardStatSubscriptionsValue": "{count} active",
+  "@dashboardStatSubscriptionsValue": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "dashboardEmptyTitle": "Ready to get started?",
+  "dashboardEmptySubtitle": "Add a habit or subscription",
+
+  "habitsTitle": "Habits",
+  "habitsEmpty": "No habits yet",
+  "habitsEmptyHint": "Tap + to add one",
+  "habitsStreakDays": "{count} day streak",
+  "@habitsStreakDays": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "habitsAddTitle": "New Habit",
+  "habitsAddNameHint": "Habit name (e.g. Drink water, Read)",
+  "habitsAdd": "Add",
+
+  "subscriptionsTitle": "Subscriptions",
+  "subscriptionsEmpty": "No subscriptions yet",
+  "subscriptionsEmptyHint": "Tap + to add one",
+  "subscriptionsSummaryMonthly": "Monthly Total",
+  "subscriptionsSummaryActive": "Active Subscriptions",
+  "subscriptionsSummaryCount": "{count} subscriptions",
+  "@subscriptionsSummaryCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "subscriptionsRenewsToday": "Renews today!",
+  "subscriptionsRenewsInDays": "Renews in {days} days",
+  "@subscriptionsRenewsInDays": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "subscriptionsUpcomingDays": "In {days} days",
+  "@subscriptionsUpcomingDays": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "subscriptionsCycleMonthly": "monthly",
+  "subscriptionsCycleYearly": "yearly",
+  "subscriptionsAddTitle": "New Subscription",
+  "subscriptionsAddNameHint": "Name (e.g. Netflix, Spotify)",
+  "subscriptionsAddAmountHint": "Amount",
+  "subscriptionsAddPeriod": "Period:",
+  "subscriptionsAddMonthly": "Monthly",
+  "subscriptionsAddYearly": "Yearly",
+  "subscriptionsAdd": "Add",
+
+  "notifHabitTitle": "{emoji} Habit Time",
+  "@notifHabitTitle": {
+    "placeholders": {
+      "emoji": { "type": "String" }
+    }
+  },
+  "notifHabitBody": "Don't forget your {name} habit!",
+  "@notifHabitBody": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "notifHabitChannelName": "Habit Reminders",
+  "notifHabitChannelDesc": "Daily habit reminders",
+  "notifSubTitle": "{emoji} Subscription Renewing",
+  "@notifSubTitle": {
+    "placeholders": {
+      "emoji": { "type": "String" }
+    }
+  },
+  "notifSubBody": "{name} renews in 3 days ({amount})",
+  "@notifSubBody": {
+    "placeholders": {
+      "name": { "type": "String" },
+      "amount": { "type": "String" }
+    }
+  },
+  "notifSubChannelName": "Subscription Reminders",
+  "notifSubChannelDesc": "Subscription renewal reminders"
+}

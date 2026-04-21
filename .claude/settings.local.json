@@ -3,7 +3,9 @@
     "allow": [
       "Bash(flutter pub *)",
       "Bash(flutter build *)",
-      "Bash(grep -v \"^$\\\\|Running Gradle\\\\|assembleDebug\")"
+      "Bash(grep -v \"^$\\\\|Running Gradle\\\\|assembleDebug\")",
+      "Bash(flutter gen-l10n *)",
+      "Bash(flutter analyze *)"
     ]
   }
 }

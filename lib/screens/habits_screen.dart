@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+import '../l10n/app_localizations.dart';
 import '../services/storage_service.dart';
 import '../models/habit.dart';
 import '../theme/app_theme.dart';
@@ -11,9 +12,10 @@ class HabitsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Alışkanlıklar'),
+        title: Text(l.habitsTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.add, color: AppTheme.primary),
@@ -25,7 +27,7 @@ class HabitsScreen extends StatelessWidget {
         builder: (context, storage, _) {
           final habits = storage.getHabits();
           if (habits.isEmpty) {
-            return const _EmptyState();
+            return _EmptyState();
           }
           return ListView.builder(
             padding: const EdgeInsets.all(16),
@@ -47,6 +49,7 @@ class HabitsScreen extends StatelessWidget {
   }
 
   void _showAddHabitSheet(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final nameController = TextEditingController();
     String selectedEmoji = '⭐';
     final emojis = ['⭐', '💪', '📚', '🏃', '💧', '🧘', '🎯', '🍎', '😴', '✍️'];
@@ -66,8 +69,8 @@ class HabitsScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Yeni Alışkanlık',
-                  style: TextStyle(
+              Text(l.habitsAddTitle,
+                  style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: AppTheme.textPrimary)),
@@ -91,8 +94,8 @@ class HabitsScreen extends StatelessWidget {
                                     : Colors.transparent,
                               ),
                             ),
-                            child:
-                                Text(e, style: const TextStyle(fontSize: 24)),
+                            child: Text(e,
+                                style: const TextStyle(fontSize: 24)),
                           ),
                         ))
                     .toList(),
@@ -102,9 +105,7 @@ class HabitsScreen extends StatelessWidget {
                 controller: nameController,
                 autofocus: true,
                 style: const TextStyle(color: AppTheme.textPrimary),
-                decoration: const InputDecoration(
-                  hintText: 'Alışkanlık adı (ör. Su iç, Kitap oku)',
-                ),
+                decoration: InputDecoration(hintText: l.habitsAddNameHint),
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -127,8 +128,8 @@ class HabitsScreen extends StatelessWidget {
                         .saveHabit(habit);
                     Navigator.pop(context);
                   },
-                  child: const Text('Ekle',
-                      style: TextStyle(
+                  child: Text(l.habitsAdd,
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold)),
@@ -143,23 +144,22 @@ class HabitsScreen extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
-  const _EmptyState();
-
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    final l = AppLocalizations.of(context)!;
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('🌱', style: TextStyle(fontSize: 64)),
-          SizedBox(height: 16),
-          Text('Henüz alışkanlık yok',
-              style:
-                  TextStyle(color: AppTheme.textSecondary, fontSize: 16)),
-          SizedBox(height: 8),
-          Text('+ butonuyla ekleyebilirsin',
-              style:
-                  TextStyle(color: AppTheme.textSecondary, fontSize: 13)),
+          const Text('🌱', style: TextStyle(fontSize: 64)),
+          const SizedBox(height: 16),
+          Text(l.habitsEmpty,
+              style: const TextStyle(
+                  color: AppTheme.textSecondary, fontSize: 16)),
+          const SizedBox(height: 8),
+          Text(l.habitsEmptyHint,
+              style: const TextStyle(
+                  color: AppTheme.textSecondary, fontSize: 13)),
         ],
       ),
     );
@@ -178,7 +178,7 @@ class _AnimatedItem extends StatelessWidget {
       tween: Tween(begin: 0, end: 1),
       duration: Duration(milliseconds: 300 + index * 50),
       curve: Curves.easeOut,
-      builder: (_ , value, _) => Opacity(
+      builder: (_, value, _) => Opacity(
         opacity: value,
         child: Transform.translate(
           offset: Offset(0, 20 * (1 - value)),
