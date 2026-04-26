@@ -4,6 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../services/storage_service.dart';
 import '../models/subscription.dart';
 import '../theme/app_theme.dart';
+import '../widgets/quote_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -42,6 +43,8 @@ class DashboardScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _Greeting(),
+                const SizedBox(height: 16),
+                const QuoteCard(),
                 const SizedBox(height: 20),
                 _sectionLabel(l.dashboardSectionToday),
                 const SizedBox(height: 10),

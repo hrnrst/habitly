@@ -433,6 +433,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Subscription renewal reminders'**
   String get notifSubChannelDesc;
+
+  /// No description provided for @paywallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Habitly Premium'**
+  String get paywallTitle;
+
+  /// No description provided for @paywallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Build better habits, manage smarter'**
+  String get paywallSubtitle;
+
+  /// No description provided for @paywallFeature1.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited habits & subscriptions'**
+  String get paywallFeature1;
+
+  /// No description provided for @paywallFeature2.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily inspiration notification'**
+  String get paywallFeature2;
+
+  /// No description provided for @paywallFeature3.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly & monthly statistics'**
+  String get paywallFeature3;
+
+  /// No description provided for @paywallFeature4.
+  ///
+  /// In en, this message translates to:
+  /// **'Spending analysis charts'**
+  String get paywallFeature4;
+
+  /// No description provided for @paywallFeature5.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom reminder times'**
+  String get paywallFeature5;
+
+  /// No description provided for @paywallSubscribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Premium'**
+  String get paywallSubscribe;
+
+  /// No description provided for @paywallRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore Purchases'**
+  String get paywallRestore;
+
+  /// No description provided for @paywallDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Maybe Later'**
+  String get paywallDismiss;
+
+  /// No description provided for @paywallLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get paywallLoading;
+
+  /// No description provided for @paywallPerMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'/ month'**
+  String get paywallPerMonth;
+
+  /// No description provided for @paywallPerYear.
+  ///
+  /// In en, this message translates to:
+  /// **'/ year'**
+  String get paywallPerYear;
+
+  /// No description provided for @paywallBestValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Value'**
+  String get paywallBestValue;
+
+  /// No description provided for @paywallRestoreSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases restored!'**
+  String get paywallRestoreSuccess;
+
+  /// No description provided for @paywallRestoreFail.
+  ///
+  /// In en, this message translates to:
+  /// **'No active subscription found.'**
+  String get paywallRestoreFail;
+
+  /// No description provided for @freemiumHabitLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Free plan allows 3 habits. Upgrade to Premium for unlimited.'**
+  String get freemiumHabitLimit;
+
+  /// No description provided for @freemiumSubLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Free plan allows 3 subscriptions. Upgrade to Premium for unlimited.'**
+  String get freemiumSubLimit;
+
+  /// No description provided for @freemiumUpgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade'**
+  String get freemiumUpgrade;
+
+  /// No description provided for @quoteOfTheDay.
+  ///
+  /// In en, this message translates to:
+  /// **'QUOTE OF THE DAY'**
+  String get quoteOfTheDay;
+
+  /// No description provided for @notifMotivationChannelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Inspiration'**
+  String get notifMotivationChannelName;
+
+  /// No description provided for @notifMotivationChannelDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Morning motivation quotes'**
+  String get notifMotivationChannelDesc;
 }
 
 class _AppLocalizationsDelegate

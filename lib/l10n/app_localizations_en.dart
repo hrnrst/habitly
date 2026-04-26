@@ -199,4 +199,72 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notifSubChannelDesc => 'Subscription renewal reminders';
+
+  @override
+  String get paywallTitle => 'Habitly Premium';
+
+  @override
+  String get paywallSubtitle => 'Build better habits, manage smarter';
+
+  @override
+  String get paywallFeature1 => 'Unlimited habits & subscriptions';
+
+  @override
+  String get paywallFeature2 => 'Daily inspiration notification';
+
+  @override
+  String get paywallFeature3 => 'Weekly & monthly statistics';
+
+  @override
+  String get paywallFeature4 => 'Spending analysis charts';
+
+  @override
+  String get paywallFeature5 => 'Custom reminder times';
+
+  @override
+  String get paywallSubscribe => 'Start Premium';
+
+  @override
+  String get paywallRestore => 'Restore Purchases';
+
+  @override
+  String get paywallDismiss => 'Maybe Later';
+
+  @override
+  String get paywallLoading => 'Loading...';
+
+  @override
+  String get paywallPerMonth => '/ month';
+
+  @override
+  String get paywallPerYear => '/ year';
+
+  @override
+  String get paywallBestValue => 'Best Value';
+
+  @override
+  String get paywallRestoreSuccess => 'Purchases restored!';
+
+  @override
+  String get paywallRestoreFail => 'No active subscription found.';
+
+  @override
+  String get freemiumHabitLimit =>
+      'Free plan allows 3 habits. Upgrade to Premium for unlimited.';
+
+  @override
+  String get freemiumSubLimit =>
+      'Free plan allows 3 subscriptions. Upgrade to Premium for unlimited.';
+
+  @override
+  String get freemiumUpgrade => 'Upgrade';
+
+  @override
+  String get quoteOfTheDay => 'QUOTE OF THE DAY';
+
+  @override
+  String get notifMotivationChannelName => 'Daily Inspiration';
+
+  @override
+  String get notifMotivationChannelDesc => 'Morning motivation quotes';
 }

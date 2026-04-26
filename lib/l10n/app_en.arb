@@ -123,5 +123,29 @@
     }
   },
   "notifSubChannelName": "Subscription Reminders",
-  "notifSubChannelDesc": "Subscription renewal reminders"
+  "notifSubChannelDesc": "Subscription renewal reminders",
+
+  "paywallTitle": "Habitly Premium",
+  "paywallSubtitle": "Build better habits, manage smarter",
+  "paywallFeature1": "Unlimited habits & subscriptions",
+  "paywallFeature2": "Daily inspiration notification",
+  "paywallFeature3": "Weekly & monthly statistics",
+  "paywallFeature4": "Spending analysis charts",
+  "paywallFeature5": "Custom reminder times",
+  "paywallSubscribe": "Start Premium",
+  "paywallRestore": "Restore Purchases",
+  "paywallDismiss": "Maybe Later",
+  "paywallLoading": "Loading...",
+  "paywallPerMonth": "/ month",
+  "paywallPerYear": "/ year",
+  "paywallBestValue": "Best Value",
+  "paywallRestoreSuccess": "Purchases restored!",
+  "paywallRestoreFail": "No active subscription found.",
+  "freemiumHabitLimit": "Free plan allows 3 habits. Upgrade to Premium for unlimited.",
+  "freemiumSubLimit": "Free plan allows 3 subscriptions. Upgrade to Premium for unlimited.",
+  "freemiumUpgrade": "Upgrade",
+
+  "quoteOfTheDay": "QUOTE OF THE DAY",
+  "notifMotivationChannelName": "Daily Inspiration",
+  "notifMotivationChannelDesc": "Morning motivation quotes"
 }

@@ -3,9 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../l10n/app_localizations.dart';
 import '../services/storage_service.dart';
+import '../services/purchase_service.dart';
 import '../models/habit.dart';
 import '../theme/app_theme.dart';
 import '../widgets/habit_card.dart';
+import 'paywall_screen.dart';
 
 class HabitsScreen extends StatelessWidget {
   const HabitsScreen({super.key});
@@ -19,7 +21,7 @@ class HabitsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.add, color: AppTheme.primary),
-            onPressed: () => _showAddHabitSheet(context),
+            onPressed: () => _onAddTapped(context),
           ),
         ],
       ),
@@ -46,6 +48,16 @@ class HabitsScreen extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _onAddTapped(BuildContext context) {
+    final isPremium = context.read<PurchaseService>().isPremium;
+    final storage = context.read<StorageService>();
+    if (!storage.canAddHabit(isPremium)) {
+      showPaywall(context);
+      return;
+    }
+    _showAddHabitSheet(context);
   }
 
   void _showAddHabitSheet(BuildContext context) {

@@ -3,9 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../l10n/app_localizations.dart';
 import '../services/storage_service.dart';
+import '../services/purchase_service.dart';
 import '../models/subscription.dart';
 import '../theme/app_theme.dart';
 import '../widgets/subscription_card.dart';
+import 'paywall_screen.dart';
 
 class SubscriptionsScreen extends StatelessWidget {
   const SubscriptionsScreen({super.key});
@@ -19,7 +21,7 @@ class SubscriptionsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.add, color: AppTheme.primary),
-            onPressed: () => _showAddSubscriptionSheet(context),
+            onPressed: () => _onAddTapped(context),
           ),
         ],
       ),
@@ -62,6 +64,16 @@ class SubscriptionsScreen extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _onAddTapped(BuildContext context) {
+    final isPremium = context.read<PurchaseService>().isPremium;
+    final storage = context.read<StorageService>();
+    if (!storage.canAddSubscription(isPremium)) {
+      showPaywall(context);
+      return;
+    }
+    _showAddSubscriptionSheet(context);
   }
 
   void _showAddSubscriptionSheet(BuildContext context) {

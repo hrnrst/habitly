@@ -110,6 +110,41 @@ class NotificationService {
 
   static Future<void> cancelAll() => _plugin.cancelAll();
 
+  static const _motivationNotifId = 9999;
+  static const _motivationChannelId = 'motivation_channel';
+
+  static Future<void> scheduleDailyMotivation({
+    int hour = 8,
+    int minute = 0,
+  }) async {
+    final isTr = _isTurkish();
+    await _plugin.zonedSchedule(
+      id: _motivationNotifId,
+      title: isTr ? '💡 Günün İlhamı' : '💡 Daily Inspiration',
+      body: isTr
+          ? 'Bugünkü motivasyon dozunu almak için aç!'
+          : 'Open Habitly for your daily dose of motivation!',
+      scheduledDate: _nextDailyInstance(hour, minute),
+      notificationDetails: NotificationDetails(
+        android: AndroidNotificationDetails(
+          _motivationChannelId,
+          isTr ? 'Günlük İlham' : 'Daily Inspiration',
+          channelDescription: isTr
+              ? 'Sabah motivasyon bildirimleri'
+              : 'Morning motivation quotes',
+          importance: Importance.defaultImportance,
+          priority: Priority.defaultPriority,
+        ),
+        iOS: const DarwinNotificationDetails(),
+      ),
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      matchDateTimeComponents: DateTimeComponents.time,
+    );
+  }
+
+  static Future<void> cancelDailyMotivation() =>
+      _plugin.cancel(id: _motivationNotifId);
+
   static bool _isTurkish() {
     final locale = Platform.localeName; // e.g. "tr_TR", "en_US"
     return locale.startsWith('tr');

@@ -199,4 +199,72 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notifSubChannelDesc => 'Abonelik yenileme hatırlatmaları';
+
+  @override
+  String get paywallTitle => 'Habitly Premium';
+
+  @override
+  String get paywallSubtitle => 'Daha iyi alışkanlıklar, daha akıllı yönetim';
+
+  @override
+  String get paywallFeature1 => 'Sınırsız alışkanlık ve abonelik';
+
+  @override
+  String get paywallFeature2 => 'Günlük ilham bildirimi';
+
+  @override
+  String get paywallFeature3 => 'Haftalık & aylık istatistikler';
+
+  @override
+  String get paywallFeature4 => 'Harcama analizi grafikleri';
+
+  @override
+  String get paywallFeature5 => 'Özel hatırlatıcı saatleri';
+
+  @override
+  String get paywallSubscribe => 'Premium\'a Geç';
+
+  @override
+  String get paywallRestore => 'Satın Alımları Geri Yükle';
+
+  @override
+  String get paywallDismiss => 'Şimdi Değil';
+
+  @override
+  String get paywallLoading => 'Yükleniyor...';
+
+  @override
+  String get paywallPerMonth => '/ ay';
+
+  @override
+  String get paywallPerYear => '/ yıl';
+
+  @override
+  String get paywallBestValue => 'En İyi Değer';
+
+  @override
+  String get paywallRestoreSuccess => 'Satın alımlar geri yüklendi!';
+
+  @override
+  String get paywallRestoreFail => 'Aktif abonelik bulunamadı.';
+
+  @override
+  String get freemiumHabitLimit =>
+      'Ücretsiz planda 3 alışkanlık ekleyebilirsin. Sınırsız için Premium\'a geç.';
+
+  @override
+  String get freemiumSubLimit =>
+      'Ücretsiz planda 3 abonelik ekleyebilirsin. Sınırsız için Premium\'a geç.';
+
+  @override
+  String get freemiumUpgrade => 'Premium\'a Geç';
+
+  @override
+  String get quoteOfTheDay => 'GÜNÜN İLHAMI';
+
+  @override
+  String get notifMotivationChannelName => 'Günlük İlham';
+
+  @override
+  String get notifMotivationChannelDesc => 'Sabah motivasyon bildirimleri';
 }

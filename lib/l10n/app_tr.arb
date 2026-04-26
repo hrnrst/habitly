@@ -61,5 +61,29 @@
   "notifSubTitle": "{emoji} Abonelik Yenileniyor",
   "notifSubBody": "{name} 3 gün sonra yenileniyor ({amount})",
   "notifSubChannelName": "Abonelik Hatırlatıcıları",
-  "notifSubChannelDesc": "Abonelik yenileme hatırlatmaları"
+  "notifSubChannelDesc": "Abonelik yenileme hatırlatmaları",
+
+  "paywallTitle": "Habitly Premium",
+  "paywallSubtitle": "Daha iyi alışkanlıklar, daha akıllı yönetim",
+  "paywallFeature1": "Sınırsız alışkanlık ve abonelik",
+  "paywallFeature2": "Günlük ilham bildirimi",
+  "paywallFeature3": "Haftalık & aylık istatistikler",
+  "paywallFeature4": "Harcama analizi grafikleri",
+  "paywallFeature5": "Özel hatırlatıcı saatleri",
+  "paywallSubscribe": "Premium'a Geç",
+  "paywallRestore": "Satın Alımları Geri Yükle",
+  "paywallDismiss": "Şimdi Değil",
+  "paywallLoading": "Yükleniyor...",
+  "paywallPerMonth": "/ ay",
+  "paywallPerYear": "/ yıl",
+  "paywallBestValue": "En İyi Değer",
+  "paywallRestoreSuccess": "Satın alımlar geri yüklendi!",
+  "paywallRestoreFail": "Aktif abonelik bulunamadı.",
+  "freemiumHabitLimit": "Ücretsiz planda 3 alışkanlık ekleyebilirsin. Sınırsız için Premium'a geç.",
+  "freemiumSubLimit": "Ücretsiz planda 3 abonelik ekleyebilirsin. Sınırsız için Premium'a geç.",
+  "freemiumUpgrade": "Premium'a Geç",
+
+  "quoteOfTheDay": "GÜNÜN İLHAMI",
+  "notifMotivationChannelName": "Günlük İlham",
+  "notifMotivationChannelDesc": "Sabah motivasyon bildirimleri"
 }

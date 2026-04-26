@@ -8,6 +8,15 @@ class StorageService extends ChangeNotifier {
   static const String _habitsBox = 'habits';
   static const String _subscriptionsBox = 'subscriptions';
 
+  static const int freeHabitLimit = 3;
+  static const int freeSubLimit = 3;
+
+  bool canAddHabit(bool isPremium) =>
+      isPremium || getHabits().length < freeHabitLimit;
+
+  bool canAddSubscription(bool isPremium) =>
+      isPremium || getSubscriptions().length < freeSubLimit;
+
   late Box _habits;
   late Box _subscriptions;
 

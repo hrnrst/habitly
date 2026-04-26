@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'l10n/app_localizations.dart';
 import 'services/storage_service.dart';
 import 'services/notification_service.dart';
+import 'services/purchase_service.dart';
 import 'theme/app_theme.dart';
 import 'screens/home_screen.dart';
 
@@ -15,9 +16,15 @@ void main() async {
   final storage = StorageService();
   await storage.init();
 
+  final purchases = PurchaseService();
+  await purchases.init();
+
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => storage,
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => storage),
+        ChangeNotifierProvider(create: (_) => purchases),
+      ],
       child: const HabitlyApp(),
     ),
   );
